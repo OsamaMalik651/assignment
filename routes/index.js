@@ -1,6 +1,17 @@
 var express = require("express");
 var router = express.Router();
 var rg = require("random-greetings");
+let greetings = [
+  "Hello",
+  "Hello There",
+  "Greetings",
+  "Hola",
+  "Bonjour",
+  "Ciao",
+  "Guten Targ",
+  "Bonjour",
+  "Good day to you!",
+];
 
 var moment = require("moment");
 
@@ -34,12 +45,16 @@ router.post("/", function (req, res, next) {
 
 //Route to load the main page. Package details, random greeting and the current time is passed in here.
 router.get("/", function (req, res, next) {
-  // var data = cardData;
+  var today = new Date();
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes();
+  var dt = date + " " + time;
   Package.find((err, packages) => {
     res.render("index", {
       Packages: packages,
-      greeting: rg.greet(),
-      time: moment().format("MMMM Do YYYY"),
+      greetings: greetings[Math.floor(Math.random() * greetings.length)],
+      time: dt,
     });
   });
 });
