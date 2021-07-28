@@ -6,9 +6,12 @@ var moment = require("moment");
 
 const Package = require("../models/pckgmdl").Packages;
 
+// Route to load new package creation page
 router.get("/create", function (req, res, next) {
   res.render("package-create");
 });
+
+//function to store the new package details into the database.
 router.post("/", function (req, res, next) {
   const package = new Package();
   package.id = req.body.id;
@@ -29,6 +32,7 @@ router.post("/", function (req, res, next) {
   });
 });
 
+//Route to load the main page. Package details, random greeting and the current time is passed in here.
 router.get("/", function (req, res, next) {
   // var data = cardData;
   Package.find((err, packages) => {
@@ -39,14 +43,5 @@ router.get("/", function (req, res, next) {
     });
   });
 });
-
-// router.get("/", function (req, res, next) {
-//   var data = cardData;
-//   res.render("index", {
-//     bookStore: data,
-//     greeting: rg.greet(),
-//     time: moment().format("MMMM Do YYYY"),
-//   });
-// });
 
 module.exports = router;

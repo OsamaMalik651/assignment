@@ -2,6 +2,7 @@ extends layout
 
 block content 
     .container-fluid
+        //Main Content of the Contact page
         .container-fluid.shadow-lg.p-3.mb-3.rounded
             .px-4.py-2.my-4.text-center
                 h1.display-4.fw-bold Contact us
@@ -27,6 +28,7 @@ block content
                     i.bi.bi-pin-map(style='font-size: 6rem; color: rgb(255,255,255)')
                     h3 Visit us
                     h3 Calgary, AB, Canada
+        //Show the agent details card from the database
         if agentDetails
             .container-fluid.shadow.d-flex.flex-column.p-3.col-sm-12.col-lg-6.bg-none(style='width: 100%;')
                 h1(style="text-align: center; color: white") Our Agents
@@ -39,13 +41,13 @@ block content
                                     p.card-text.mt-3(style="margin-bottom:0") Contact:#{agent.agentPhone}
                                     p.card-text(style="margin-bottom:0")  #{agent.agentPosition}
                                     p.card-text Agency ID: #{agent.agencyId}
+        //Retrieve a particular user from the database.(Its here for the assignment task completion only)
         if name
             .container-fluid.shadow.d-flex.flex-column.p-3.col-sm-12.col-lg-6.bg-none(style='width: 100%;')
                 h1.text-white(style="text-align: center; color: white") Last Contacted by
                 .container-fluid.d-flex.flex-row.flex-wrap.mr-auto.justify-content-sm-center.justify-content-lg-center(style='width: 75%;color:white;')
                     h5 #{name.contactFormName} with email : #{name.contactFormEmail} and Message : #{name.contactFormQuery}
-
-
+            //Contact form to get the details and store it in the database
             .container-fluid.shadow.d-flex.flex-column.p-3.col-sm-12.col-lg-6(style='width: 100%; color: white')                    
                 .container-fluid.d-flex.flex-column.p-3.col-sm-12.col-lg-6(style='width: 50%; color: white')
                     h1(style="text-align: center; color: white")
